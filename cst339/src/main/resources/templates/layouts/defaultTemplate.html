@@ -1,0 +1,23 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http:://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nile</title>
+    <link href="css/main.css" rel="stylesheet">
+</head>
+
+<body>
+    <div align="center">
+        <div th:replace="layouts/common::header">My Header</div>
+
+        <section layout:fragment="content">
+            My Body Contents
+        </section>
+
+        <div th:replace="layouts/common::footer">My Footer</div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

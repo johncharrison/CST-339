@@ -1,14 +1,14 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http:://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="layouts/defaultTemplate">
+
+<head>
+
+</head>
 
 <body>
-    <div align="center">
-        <h1>CST-339</h1>
+    <div layout:fragment="content">
+        Home
     </div>
-    <ul>
-        <li><a th:href="@{registration}">Register</a></li>
-        <li><a th:href="@{login}">Login</a></li>
-    </ul>
-
 </body>
 
 </html>
