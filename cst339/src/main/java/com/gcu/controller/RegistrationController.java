@@ -1,38 +1,31 @@
 package com.gcu.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.gcu.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import com.gcu.model.User;
-import com.gcu.repository.UserRepository;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/registration")
 public class RegistrationController {
 
-	@Autowired
-	private UserRepository userRepository;
+    @GetMapping("")
+    public String registration(Model model) {
+        model.addAttribute("user", new User());
+        return "registration";
+    }
 
-	@GetMapping("/register")
-	public String showRegistrationForm(Model model) {
-		model.addAttribute("user", new User());
-		return "registration";
-	}
-
-	@PostMapping("/register")
-	public String registerUser(@ModelAttribute("user") @Validated User user, BindingResult bindingResult) {
-		if (bindingResult.hasErrors()) {
-			return "registration";
-		}
-
-		// You can add password hashing and other user-related logic here
-		userRepository.save(user);
-		return "redirect:/login"; // Redirect to login page
-	}
+    @PostMapping("/register")
+    public String registerUser(@Validated User user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "registration";
+        }
+        System.out.println("...this is where we would save the user in the database...IF WE HAD ONE");
+        return "redirect:/login"; // Redirect to login page
+    }
 
 }

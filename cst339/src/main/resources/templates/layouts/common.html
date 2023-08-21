@@ -1,0 +1,77 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http:://www.ultraq.net.nz/thymeleaf/layout">
+
+<div th:fragment="header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+            <a class="navbar-brand text-primary" th:href="@{/}">
+                <!-- <img th:src="@{/images/logo.png}" width="10%" height="auto" class="" /> -->
+                NILE
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="flex">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/login}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/registration}">Register</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+<div th:fragment="loggedInHeader">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+            <a class="navbar-brand text-primary" th:href="@{/}">
+                <!-- <img th:src="@{/images/logo.png}" width="10%" height="auto" class="" /> -->
+                NILE
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="flex">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" th:href="@{/products}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/products}">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/}">Log Out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div th:fragment="footer">
+    <footer class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center justify-content-center flex-column">
+            <a th:href="@{/}" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                <img th:src="@{/images/logo.png}" width="75px" height="auto" />
+            </a>
+            <span class="mb-3 mb-md-0 text-body-secondary text-center">© 2023 Grand Canyon University</span>
+        </div>
+    </footer>
+
+
+</div>
+
+</html>
