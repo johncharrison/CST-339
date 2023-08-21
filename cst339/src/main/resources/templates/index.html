@@ -1,13 +1,67 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http:://www.ultraq.net.nz/thymeleaf/layout"
     layout:decorate="~{layouts/defaultTemplate}">
 
-<head>
-
-</head>
-
 <body>
     <div layout:fragment="content">
-        Home
+        <div class="container my-5">
+            <div class="row justify-content-between text-center">
+                <div class="my-3">
+                    <h1>Welcome to <span class="text-primary">NILE</span></h1>
+                    <hr />
+                    <p>Hello! Welcome to <span class="text-primary">NILE</span>! We are a one of a kind company, that
+                        sells
+                        products that are a dime a dozen, at prices you wouldn't dream of paying, at sub-standard
+                        quality,
+                        all because we pumped a ton of money into our marketing team who forwarded that money to a bunch
+                        of
+                        16 year olds on TikTok to push our products. Have fun!</p>
+                </div>
+                <div class="col-md-6 col-lg-4 ">
+                    <img th:src="@{images/products/ant-farm.jpg}" width="100%" height="auto" />
+                    <div class="row justify-content-between">
+                        <div class="col-6">
+                            <p><span class="text-primary">Ant Farm</span></p>
+                        </div>
+                        <div class="col-6">
+                            <p>$49.99</p>
+                        </div>
+                    </div>
+                    <p>Do you like little six-legged creatures? Do you hate how they're outside where you can't see
+                        them? Well this is the product for you! Not only can you view your ant friends up close, but you
+                        also run the risk of them breaking out and taking over your home!</p>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <img th:src="@{images/products/cups.jpg}" width="100%" height="auto" />
+                    <div class="row justify-content-between">
+                        <div class="col-6">
+                            <p><span class="text-primary">Cups</span></p>
+                        </div>
+                        <div class="col-6">
+                            <p>$29.99</p>
+                        </div>
+                    </div>
+                    <p>Cups!! Look at these cups! They come in all colors and we'll even throw in a straw for $0.99
+                        more! They can holds all types of liquid. </p>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <img th:src="@{images/products/usb-c.jpg}" width="100%" height="auto" />
+                    <div class="row justify-content-between">
+                        <div class="col-6">
+                            <p><span class="text-primary">USB-C Charging Cable</span></p>
+                        </div>
+                        <div class="col-6">
+                            <p>$19.99</p>
+                        </div>
+
+                    </div>
+                    <p>You may be asking yourself, "Why would I pay $20 for this charging cable?", and we say "Why
+                        not?!". Once in a lifetime opportunity to own a piece of history. This charging cable will
+                        without a doubt break after a few days of use and we'll still be $20 richer. Go ahead and buy 2.
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 

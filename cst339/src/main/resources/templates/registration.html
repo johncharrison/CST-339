@@ -7,7 +7,55 @@
 
 <body>
     <div layout:fragment="content">
-        Registration
+        <div class="container my-5">
+            <div class="row justify-content-between align-items-center">
+                <h5 class="text-primary">Register</h5>
+                <hr />
+                <div class="col-md-5 col-lg-4">
+                    <p>Create a <span class="text-primary">NILE</span> account to start shopping for all the same
+                        products as that other
+                        online store, but
+                        at a higher price and reduced quality. If it's not the best, it's probably <span
+                            class="text-primary">NILE</span>!</p>
+                    <p>Creating an account is as simple as typing your first name, last name, email and your most
+                        secretive password (twice). We promise it won't be stored as plaintext in our default password
+                        protected database</p>
+                    <p class="text-primary">Let us help you spend your money!</p>
+                </div>
+                <div class="col-md-7 col-lg-7">
+                    <form th:action="@{registration/register}" th:object="${user}" method="post">
+                        <div class="row g-3">
+                            <div class="col-sm-6 ">
+                                <label for="firstName" class="form-label">First name</label>
+                                <input type="text" class="form-control" id="firstName" placeholder="Jane"
+                                    th:field="*{firstName}">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lastName" class="form-label">Last name</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="Doe"
+                                    th:field="*{lastName}">
+                            </div>
+                            <div class="col-sm-12">
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="email" placeholder="email@example.com"
+                                    th:field="*{email}">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Password"
+                                    th:field="*{password}">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="confirmPassword" class="form-label">Confirm password</label>
+                                <input type="password" class="form-control" id="confirmPassword"
+                                    placeholder="Confirm password">
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
