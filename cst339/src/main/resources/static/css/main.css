@@ -12212,4 +12212,132 @@ fieldset:disabled .btn {
     }
 }
 
-/*# sourceMappingURL=bootstrap.css.map */
+
+@keyframes fadeinright {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.fadeinright1 {
+    animation: fadeinright 1s ease-in-out;
+}
+
+.fadeinright2 {
+    animation: fadeinright 1.25s ease-in-out;
+}
+
+.fadeinright3 {
+    animation: fadeinright 1.5s ease-in-out;
+}
+
+.fadeinright4 {
+    animation: fadeinright 1.75s ease-in-out;
+}
+
+.fadeinright5 {
+    animation: fadeinright 2s ease-in-out;
+}
+
+
+@keyframes fadeinleft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.fadeinleft1 {
+    animation: fadeinleft 1s ease-in-out;
+}
+
+.fadeinleft2 {
+    animation: fadeinleft 1.25s ease-in-out;
+}
+
+.fadeinleft3 {
+    animation: fadeinleft 1.5s ease-in-out;
+}
+
+.fadeinleft4 {
+    animation: fadeinleft 1.75s ease-in-out;
+}
+
+.fadeinleft5 {
+    animation: fadeinleft 2s ease-in-out;
+}
+
+@keyframes fadeintop {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fadeintop1 {
+    animation: fadeintop 1s ease-in-out;
+}
+
+.fadeintop2 {
+    animation: fadeintop 1.25s ease-in-out;
+}
+
+.fadeintop3 {
+    animation: fadeintop 1.5s ease-in-out;
+}
+
+.fadeintop4 {
+    animation: fadeintop 1.75s ease-in-out;
+}
+
+.fadeintop5 {
+    animation: fadeintop 2s ease-in-out;
+}
+
+@keyframes fadeinbottom {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fadeinbottom1 {
+    animation: fadeinbottom 1s ease-in-out;
+}
+
+.fadeinbottom2 {
+    animation: fadeinbottom 1.25s ease-in-out;
+}
+
+.fadeinbottom3 {
+    animation: fadeinbottom 1.5s ease-in-out;
+}
+
+.fadeinbottom4 {
+    animation: fadeinbottom 1.75s ease-in-out;
+}
+
+.fadeinbottom5 {
+    animation: fadeinbottom 2s ease-in-out;
+}
