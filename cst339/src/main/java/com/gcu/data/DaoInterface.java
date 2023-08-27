@@ -9,4 +9,8 @@ public interface DaoInterface<T> {
     public T get(int id);
 
     public T create(T model);
+
+    public T update(int id, T model);
+
+    public void delete(int id);
 }

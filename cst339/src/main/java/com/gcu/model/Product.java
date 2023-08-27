@@ -20,6 +20,10 @@ public class Product {
         this.price = price;
         this.stock = stock;
         this.soldOut = soldOut;
+        // still not sold on this property
+        // ideally we'd use an S3 bucket or something
+        // for a large number of items with multiple
+        // pictures with the name being <product id><img num.>.<img ext>
         this.imagePath = imagePath;
     }
 

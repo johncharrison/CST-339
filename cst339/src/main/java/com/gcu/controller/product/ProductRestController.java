@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,12 +38,12 @@ public class ProductRestController {
     }
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Product create(@Validated Product p) {
+    public Product create(@RequestBody Product p) {
         return service.create(p);
     }
 
     @PutMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Product update(@PathVariable int id, @Validated Product p) {
+    public Product update(@PathVariable int id, @RequestBody Product p) {
         return service.update(id, p);
     }
 

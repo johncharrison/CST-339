@@ -16,14 +16,11 @@ public class RestService<T> implements RestInterface<T> {
     }
 
     public T create(T model) {
-        // TODO Auto-generated method stub
-
         return dao.create(model);
     }
 
     public void delete(int id) {
-        // TODO Auto-generated method stub
-
+        dao.delete(id);
     }
 
     public T get(int id) {
@@ -31,13 +28,11 @@ public class RestService<T> implements RestInterface<T> {
     }
 
     public List<T> list() {
-        // TODO Auto-generated method stub
         return dao.list();
     }
 
     public T update(int id, T model) {
-        // TODO Auto-generated method stub
-        return null;
+        return dao.update(id, model);
     }
 
 }

@@ -33,19 +33,9 @@ public class ProductController {
         return mv;
     }
 
-    @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Product get(@PathVariable int id) {
-        return service.get(id);
-    }
-
-    @GetMapping(path = "/list", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Product> list() {
-        return service.list();
-    }
-
     @GetMapping(path = "/add-product")
-    public ModelAndView createProductPage(ModelAndView mv) {
-        mv.addObject("product", new Product());
+    public ModelAndView createProductPage(ModelAndView mv, Product product) {
+        mv.addObject("product", product);
         mv.setViewName("add-product");
         return mv;
     }
