@@ -50,5 +50,5 @@ public class User {
 		this.email = email;
 	}
 
-	// Constructors, getters, setters
+
 }
