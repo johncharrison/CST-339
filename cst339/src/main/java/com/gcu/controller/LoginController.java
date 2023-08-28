@@ -2,6 +2,8 @@ package com.gcu.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,10 +21,14 @@ public class LoginController {
     }
 
     @PostMapping("/doLogin")
-    public String doLogin(User user) {
+    public String doLogin(@Validated User user, BindingResult bindingResult) {
         // if User does not exist in db or password doesn't match
         // return "login" w/ errors
+    	
+    	  if (bindingResult.hasErrors()) {
+              return "login";
+          }
 
-        return "redirect:/products";
+        return "products";
     }
 }
