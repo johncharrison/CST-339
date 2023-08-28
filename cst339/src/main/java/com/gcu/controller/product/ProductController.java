@@ -1,19 +1,14 @@
 package com.gcu.controller.product;
 
-import java.util.List;
-
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gcu.api.RestInterface;
-import com.gcu.api.RestService;
+import com.gcu.api.ProductRestService;
 import com.gcu.model.Product;
 
 @Controller
@@ -22,7 +17,7 @@ public class ProductController {
 
     RestInterface<Product> service;
 
-    public ProductController(RestService<Product> service) {
+    public ProductController(ProductRestService service) {
         this.service = service;
     }
 
@@ -42,6 +37,10 @@ public class ProductController {
 
     @PostMapping(path = "/add-product")
     public String postCreateProduct(@Validated Product product, ModelAndView mv) {
+        System.out.println(
+                String.format("Name: %s\nDescription: %s\nPrice: $%.2f\nStock: %d", product.getName(),
+                        product.getDescription(), product.getPrice(),
+                        product.getStock()));
         service.create(product);
         return "redirect:/products";
     }

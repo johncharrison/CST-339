@@ -3,7 +3,6 @@ package com.gcu.controller.product;
 import java.util.List;
 
 import org.springframework.http.MediaType;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gcu.api.RestInterface;
-import com.gcu.api.RestService;
+import com.gcu.api.ProductRestService;
 import com.gcu.model.Product;
 
 @RestController
@@ -23,7 +22,7 @@ public class ProductRestController {
 
     RestInterface<Product> service;
 
-    public ProductRestController(RestService<Product> service) {
+    public ProductRestController(ProductRestService service) {
         this.service = service;
     }
 

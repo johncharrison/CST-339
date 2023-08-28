@@ -19,17 +19,17 @@
                 </div>
                 <div class="col-md-6 col-lg-6">
                     <div class="border-primary border-round border-solid">
-                        <form th:action="@{login/doLogin}" method="post">
+                        <form th:action="@{login/doLogin}" method="post" th:object="${user}">
                             <div class="row g-3">
                                 <div class="col-sm-12">
                                     <label for="email" class="form-label">Email address</label>
-                                    <input type="email" class="form-control" id="email" placeholder="email@example.com"
-                                        required>
+                                    <input type="email" th:field="*{email}" class="form-control" id="email"
+                                        placeholder="email@example.com" required>
                                 </div>
                                 <div class="col-sm-12">
                                     <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="password" placeholder="Password"
-                                        required>
+                                    <input type="password" th:field="*{password}" class="form-control" id="password"
+                                        placeholder="Password" required>
                                 </div>
                                 <button type="submit" class="btn btn-primary mt-3">Login</button>
                             </div>

@@ -1,7 +1,5 @@
 package com.gcu.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,16 +9,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gcu.model.User;
-import com.gcu.service.RegistrationService;
+import com.gcu.service.RegistrationServiceInterface;
 
 @Controller
 @RequestMapping("/registration")
 public class RegistrationController {
 
-	private final RegistrationService registrationService;
+	private final RegistrationServiceInterface registrationService;
 
-	@Autowired
-	public RegistrationController(RegistrationService registrationService) {
+	public RegistrationController(RegistrationServiceInterface registrationService) {
 		this.registrationService = registrationService;
 	}
 
@@ -31,7 +28,7 @@ public class RegistrationController {
 	}
 
 	@PostMapping("/register")
-	public String registerUser(@ModelAttribute("user") @Validated User user, BindingResult bindingResult) {
+	public String registerUser(@Validated User user, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			return "registration";
 		}

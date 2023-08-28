@@ -10,6 +10,18 @@ public class User {
 	public User() {
 	}
 
+	public User(String firstName, String lastName, String email, String password) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+	}
+
+	public User(String email, String password) {
+		this.email = email;
+		this.password = password;
+	}
+
 	// public Long getId() {
 	// return this.id;
 	// }
@@ -49,6 +61,5 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 
 }
