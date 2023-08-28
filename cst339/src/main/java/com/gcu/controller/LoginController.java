@@ -21,7 +21,7 @@ public class LoginController {
         this.service = service;
     }
 
-    @GetMapping("")
+    @GetMapping
     public String login(Model model) {
         model.addAttribute("user", new User());
         return "login";

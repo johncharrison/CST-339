@@ -21,7 +21,7 @@ public class RegistrationController {
 		this.registrationService = registrationService;
 	}
 
-	@GetMapping("/register")
+	@GetMapping
 	public String showRegistrationForm(Model model) {
 		model.addAttribute("user", new User());
 		return "registration";
