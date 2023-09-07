@@ -3,7 +3,7 @@
 
 **Group members**: Bruce Brown, Calvin Clocuh, John Harrison
 
-### Development:
+### Development w/docker:
 
 1. Download & Install [Docker Desktop](https://www.docker.com/products/docker-desktop/):
 
@@ -19,6 +19,9 @@
     ```
 
 3. Run `build.sh`
+
+    **Note**: You have to run this script everytime you update the code.
+
     ```bash
     $ ./build.sh
     ```
@@ -29,3 +32,10 @@
     $ docker compose up --build
     ```
     *Builds the docker container images and runs them*
+
+### Development w/o Docker:
+1. Modify the `application.properties` file to the values specific for your local development. I'll look into profiles so we can easily switch between multiple `.properties` files.
+
+2. Load `database/entrypoint.sql` in your DB.
+
+3. Run as normal.
