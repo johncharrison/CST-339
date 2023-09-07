@@ -13,20 +13,21 @@ import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "PRODUCTS")
-public class Product implements Serializable {
-
+@Table(name = "ORDERS")
+public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
-    String name;
+    @Column(name = "USERS_ID")
+    long users_id;
 
-    String description;
+    @Column(name = "PRODUCTS_ID")
+    long products_id;
 
-    float price;
+    int quantity;
 
-    int stock;
+    boolean completed;
 
     @Column(name = "CREATED_DATE")
     Date created_date;
@@ -42,36 +43,36 @@ public class Product implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public long getUsers_id() {
+        return users_id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsers_id(long users_id) {
+        this.users_id = users_id;
     }
 
-    public String getDescription() {
-        return description;
+    public long getProducts_id() {
+        return products_id;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setProducts_id(long products_id) {
+        this.products_id = products_id;
     }
 
-    public float getPrice() {
-        return price;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-    public int getStock() {
-        return stock;
+    public boolean isCompleted() {
+        return completed;
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
     public Date getCreated_date() {

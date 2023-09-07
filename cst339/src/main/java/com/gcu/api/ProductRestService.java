@@ -1,39 +1,56 @@
 package com.gcu.api;
 
-import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.gcu.data.ProductDao;
+import com.gcu.data.repository.ProductRepository;
 import com.gcu.model.Product;
 
 @Service
 public class ProductRestService implements RestInterface<Product> {
 
-    private final ProductDao dao;
+    @Autowired
+    private ProductRepository repository;
 
-    public ProductRestService(ProductDao dao) {
-        this.dao = dao;
+    public Iterable<Product> findAll() {
+        return repository.findAll();
+    }
+
+    public Product get(long id) {
+
+        Optional<Product> query = repository.findById(id);
+        if (query.isPresent()) {
+            return query.get();
+        } else {
+            return null;
+        }
     }
 
     public Product create(Product model) {
-        return dao.create(model);
+        return repository.save(model);
     }
 
-    public void delete(int id) {
-        dao.delete(id);
+    public Product update(long id, Product model) {
+        Optional<Product> query = repository.findById(id);
+        if (query.isPresent()) {
+            Product pInDB = query.get();
+            pInDB.setName(model.getName());
+            pInDB.setPrice(model.getPrice());
+            pInDB.setDescription(model.getDescription());
+            pInDB.setStock(model.getStock());
+            return repository.save(pInDB);
+        } else {
+            return null;
+        }
     }
 
-    public Product get(int id) {
-        return dao.get(id);
-    }
-
-    public List<Product> list() {
-        return dao.list();
-    }
-
-    public Product update(int id, Product model) {
-        return dao.update(id, model);
+    public void delete(long id) {
+        Optional<Product> query = repository.findById(id);
+        if (query.isPresent()) {
+            repository.delete(query.get());
+        }
     }
 
 }
