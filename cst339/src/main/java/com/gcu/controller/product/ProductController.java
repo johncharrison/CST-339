@@ -24,7 +24,7 @@ public class ProductController {
     @GetMapping("")
     public ModelAndView products(ModelAndView mv) {
         mv.setViewName("products");
-        mv.addObject("products", service.list());
+        mv.addObject("products", service.findAll());
         return mv;
     }
 

@@ -1,17 +1,15 @@
 package com.gcu.api;
 
-import java.util.List;
-
 public interface RestInterface<T> {
 
-    public List<T> list();
+    public Iterable<T> findAll();
 
-    public T get(int id);
+    public T get(long id);
 
     public T create(T model);
 
-    public T update(int id, T model);
+    public T update(long id, T model);
 
-    public void delete(int id);
+    public void delete(long id);
 
 }

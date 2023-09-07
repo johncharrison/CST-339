@@ -2,22 +2,22 @@ package com.gcu.service;
 
 import org.springframework.stereotype.Service;
 
-import com.gcu.data.UserDao;
+import com.gcu.data.repository.UserRepository;
 import com.gcu.model.User;
 
 @Service
 public class LoginService implements LoginServiceInterface {
 
-    private final UserDao dao;
+    private UserRepository repository;
     private User user;
 
-    public LoginService(UserDao dao) {
-        this.dao = dao;
+    public LoginService(UserRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public User findUser(String email) {
-        return dao.findUserByEmail(email);
+        return repository.findByEmail(email);
 
     }
 

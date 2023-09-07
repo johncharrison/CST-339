@@ -1,7 +1,5 @@
 package com.gcu.controller.product;
 
-import java.util.List;
-
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,8 +25,8 @@ public class ProductRestController {
     }
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Product> list() {
-        return service.list();
+    public Iterable<Product> findAll() {
+        return service.findAll();
     }
 
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -42,12 +40,12 @@ public class ProductRestController {
     }
 
     @PutMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Product update(@PathVariable int id, @RequestBody Product p) {
+    public Product update(@PathVariable long id, @RequestBody Product p) {
         return service.update(id, p);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable int id) {
+    public void delete(@PathVariable long id) {
         service.delete(id);
     }
 

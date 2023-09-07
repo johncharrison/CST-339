@@ -1,47 +1,39 @@
-package com.gcu.data;
+package com.gcu.data.dao;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
+import com.gcu.model.Order;
 
-import com.gcu.model.User;
-
-@Service
-public class UserDao implements DaoInterface<User> {
+public class OrderDao implements DaoInterface<Order> {
 
     @Override
-    public List<User> list() {
+    public List<Order> findAll() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'list'");
     }
 
     @Override
-    public User get(int id) {
+    public Order get(int id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'get'");
     }
 
     @Override
-    public User create(User model) {
+    public boolean create(Order model) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'create'");
     }
 
     @Override
-    public User update(int id, User model) {
+    public boolean update(int id, Order model) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
     @Override
-    public void delete(int id) {
+    public boolean delete(int id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'delete'");
-    }
-
-    public User findUserByEmail(String email) {
-        // query db for email, return User
-        return new User("Firstname", "LastName", email, "password12345");
     }
 
 }
