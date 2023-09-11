@@ -2,6 +2,7 @@ version: '3'
 services:
   db:
     build: ./database
+    restart: always
     env_file:
       - ./.env
     ports:
@@ -17,14 +18,17 @@ services:
       - "8000:8000"
     networks:
       - dev
-  # adminer:
-  #   image: adminer
-  #   restart: always
-  #   environment:
-  #     ADMINER_DEFAULT_SERVER: db
-  #     ADMINER_DESIGN: rmsoft
-  #   ports:
-  #     - "8080:8080"
+
+  adminer:
+    image: adminer
+    restart: always
+    environment:
+      ADMINER_DEFAULT_SERVER: db
+      ADMINER_DESIGN: rmsoft
+    ports:
+      - "8080:8080"
+    networks:
+      - dev
 
 networks:
   dev:

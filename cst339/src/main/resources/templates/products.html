@@ -10,8 +10,15 @@
 
     </div>
     <div layout:fragment="content">
-        Products
-    </div>
+        <div class="container my-5">
+            <div th:each="product : ${products}">
+                <a th:href="@{/product-detail/{id}(id=${product.id})}">
+                    <div>
+                        <p th:text="${product.name}"></p>
+                    </div>
+                </a>
+            </div>
+        </div>
 </body>
 
 </html>

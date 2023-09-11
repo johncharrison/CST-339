@@ -32,7 +32,7 @@ public class LoginController {
 
         if (u != null) {
             System.out.println(u.getLastName() + ", " + u.getFirstName());
-            return "products";
+            return "redirect:/products";
         }
 
         return "login";

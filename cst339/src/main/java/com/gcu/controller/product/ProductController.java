@@ -3,7 +3,9 @@ package com.gcu.controller.product;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,6 +35,30 @@ public class ProductController {
         mv.addObject("product", product);
         mv.setViewName("add-product");
         return mv;
+    }
+
+    @GetMapping(path = "/product-detail/{id}")
+    public ModelAndView detailProductPage(ModelAndView mv, Product product, @PathVariable long id) {
+        product = service.get(id);
+        mv.addObject("product", product);
+        mv.setViewName("detail-product");
+        return mv;
+
+    }
+
+    @GetMapping(path = "/update-product/{id}")
+    public ModelAndView updateProductPage(ModelAndView mv, Product product, @PathVariable long id) {
+        product = service.get(id);
+        mv.addObject("product", product);
+        mv.setViewName("update-product");
+        return mv;
+
+    }
+
+    @PutMapping(path = "/update-product/{id}")
+    public String createProductPage(ModelAndView mv, Product product, @PathVariable long id) {
+        service.update(id, product);
+        return "redirect:/products";
     }
 
     @PostMapping(path = "/add-product")
