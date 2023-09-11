@@ -3,19 +3,15 @@ package com.gcu.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.gcu.data.repository.UserRepository;
 import com.gcu.model.User;
 
 @Service
-public class RegistrationService implements RegistrationServiceInterface {
-
+public class RegistrationService {
     @Autowired
-    private UserRepository repository;
+    private UserService service;
 
-    public void registerUser(User user) {
-
-        repository.save(user);
-        System.out.println("User registered: " + user.getEmail());
+    public User registerUser(User u) {
+        return service.save(u);
     }
 
 }

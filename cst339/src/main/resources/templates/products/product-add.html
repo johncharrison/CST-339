@@ -1,0 +1,123 @@
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http:://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/loggedInTemplate}"
+>
+  <body>
+    <div layout:fragment="content">
+      <div class="container my-5">
+        <div class="row justify-content-between align-items-center">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a class="text-primary" th:href="@{/products}">Home</a>
+            </li>
+            <li
+              class="breadcrumb-item active text-secondary"
+              aria-current="page"
+            >
+              Add Product
+            </li>
+          </ol>
+          <hr />
+          <div class="col-12 my-2">
+            <a
+              th:hx-get="@{/products}"
+              hx-push-url="true"
+              hx-trigger="click"
+              hx-target="body"
+              class="back text-left"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="currentColor"
+                class="bi bi-arrow-left"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+                />
+              </svg>
+            </a>
+            <!-- BACK BUTTON -->
+          </div>
+          <div class="col-md-5 col-lg-4">
+            <p>Create a new product for our silly users to buy.</p>
+            <p>
+              Remember to price it outrageously high, and provide a terrible
+              description that provides little information on the product. It's
+              best if you just tell a random story. Like this one time I was
+              standing in line at the deli, and this guy walks in and says
+              <span class="text-primary">"Lemme get uhhh... a sammich"</span>,
+              and they immediately kicked him out.
+            </p>
+          </div>
+          <div class="col-md-7 col-lg-7">
+            <form th:object="${product}">
+              <div class="row g-3">
+                <div class="col-sm-12 form-floating">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    placeholder="Mouse traps"
+                    th:field="*{name}"
+                    required
+                  />
+                  <label for="name">Product Name</label>
+                </div>
+                <div class="col-sm-12 form-floating">
+                  <textarea
+                    class="form-control"
+                    id="description"
+                    placeholder="something"
+                    th:field="*{description}"
+                  />
+                  <label for="description">Description</label>
+                </div>
+                <div class="col-sm-6 form-floating">
+                  <input
+                    required
+                    type="number"
+                    min="0"
+                    step="any"
+                    class="form-control"
+                    placeholder="99.99"
+                    id="price"
+                    th:field="*{price}"
+                  />
+                  <label for="price">Price (USD)</label>
+                </div>
+                <div class="col-sm-6 form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="stock"
+                    th:field="*{stock}"
+                    placeholder="10"
+                    required
+                  />
+                  <label for="stock">Product Stock</label>
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <button
+                    type="button"
+                    hx-post="/products/product-add"
+                    hx-target="body"
+                    hx-trigger="click"
+                    class="btn btn-success"
+                  >
+                    Add
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

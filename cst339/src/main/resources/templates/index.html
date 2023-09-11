@@ -1,81 +1,122 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http:://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="~{layouts/defaultTemplate}">
-
-<body>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http:://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/defaultTemplate}"
+>
+  <body>
     <div layout:fragment="content">
-        <div class="container my-5 ">
-            <h1>Welcome to <span class="text-primary">NILE</span></h1>
+      <div class="container my-5">
+        <h1>Welcome to <span class="text-primary">NILE</span></h1>
 
-            <hr />
-            <div style="height: 100vh;" class="row justify-content-evenly align-items-center">
-                <div class="col-5 fadeinleft3">
-                    <p style="font-size: x-large;">Hello! Welcome to <span class="text-primary">NILE</span>! We are a
-                        one of a kind
-                        company,
-                        that
-                        sells dime a dozen products, with outrageous prices, at sub-standard quality,
-                        all because we pumped a ton of money into our marketing team who forwarded that money to a
-                        bunch
-                        of
-                        16 year olds on TikTok to push our products. We make sure that you won't be having fun so
-                        that
-                        we will!</p>
-                </div>
-                <div class="col-4 fadeinright3">
-                    <img th:src="@{images/logoC.png}" class="img-fluid" />
-                </div>
-            </div>
-
-            <hr />
-            <div style="height: 100vh;" id="row1" class="row justify-content-evenly align-items-center">
-                <div class="col-4">
-                    <img th:src="@{images/products/ant-farm.jpg}" class="img-fluid" width="100%" height="auto" />
-                </div>
-                <div class="col-5">
-                    <p><span class="text-primary" style="font-size: x-large;">Ant Farm</span></p>
-                    <p class="font-bold" style="font-size: larger;">$49.99</p>
-                    <p style="font-size: large;">Do you like little six-legged creatures? Do you hate how they're
-                        outside where you can't see
-                        them? Well this is the product for you! Not only can you view your ant friends up close, but
-                        you
-                        also run the risk of them breaking out and taking over your home!</p>
-                </div>
-            </div>
-
-            <hr />
-            <div style="height: 100vh;" id="row2" class="row justify-content-evenly align-items-center">
-                <div class="col-5">
-                    <p><span class="text-primary" style="font-size: x-large;">Cups</span></p>
-                    <p class="font-bold" style="font-size: larger;">$29.99</p>
-                    <p style="font-size: large;">Cups!! Look at these cups! They come in all colors and we'll even throw
-                        in a straw for $0.99
-                        more! They can holds all types of liquid. </p>
-                </div>
-                <div class="col-4">
-                    <img th:src="@{images/products/cups.jpg}" class="img-fluid" width="100%" height="auto" />
-                </div>
-            </div>
-
-            <hr />
-            <div style="height: 100vh;" id="row3" class="row justify-content-evenly align-items-center">
-                <div class="col-4">
-                    <img th:src="@{images/products/usb-c.jpg}" class="img-fluid" width="100%" height="auto" />
-                </div>
-                <div class="col-5">
-                    <p><span class="text-primary font-bold" style="font-size: x-large;">USB-C Charging Cable</span></p>
-                    <p class="font-bold" style="font-size: larger;">$19.99</p>
-                    <p style="font-size: large;">You may be asking yourself, "Why would I pay $20 for this charging
-                        cable?", and we say "Why
-                        not?!". Once in a lifetime opportunity to own a piece of history. This charging cable will
-                        without a doubt break after a few days of use and we'll still be $20 richer. Go ahead and
-                        buy 2.
-                    </p>
-                </div>
-            </div>
-
+        <hr />
+        <div
+          style="height: 100vh"
+          class="row justify-content-evenly align-items-center"
+        >
+          <div class="col-5 fadeinleft3">
+            <p style="font-size: x-large">
+              Hello! Welcome to <span class="text-primary">NILE</span>! We are a
+              one of a kind company, that sells dime a dozen products, with
+              outrageous prices, at sub-standard quality, all because we pumped
+              a ton of money into our marketing team who forwarded that money to
+              a bunch of 16 year olds on TikTok to push our products. We make
+              sure that you won't be having fun so that we will!
+            </p>
+          </div>
+          <div class="col-4 fadeinright3">
+            <img th:src="@{images/logoC.png}" class="img-fluid" />
+          </div>
         </div>
-    </div>
-</body>
 
+        <hr />
+        <div
+          style="height: 100vh"
+          id="row1"
+          class="row justify-content-evenly align-items-center"
+        >
+          <div class="col-4">
+            <img
+              th:src="@{images/products/ant-farm.jpg}"
+              class="img-fluid"
+              width="100%"
+              height="auto"
+            />
+          </div>
+          <div class="col-5">
+            <p>
+              <span class="text-primary" style="font-size: x-large"
+                >Ant Farm</span
+              >
+            </p>
+            <p class="font-bold" style="font-size: larger">$49.99</p>
+            <p style="font-size: large">
+              Do you like little six-legged creatures? Do you hate how they're
+              outside where you can't see them? Well this is the product for
+              you! Not only can you view your ant friends up close, but you also
+              run the risk of them breaking out and taking over your home!
+            </p>
+          </div>
+        </div>
+
+        <hr />
+        <div
+          style="height: 100vh"
+          id="row2"
+          class="row justify-content-evenly align-items-center"
+        >
+          <div class="col-5">
+            <p>
+              <span class="text-primary" style="font-size: x-large">Cups</span>
+            </p>
+            <p class="font-bold" style="font-size: larger">$29.99</p>
+            <p style="font-size: large">
+              Cups!! Look at these cups! They come in all colors and we'll even
+              throw in a straw for $0.99 more! They can holds all types of
+              liquid.
+            </p>
+          </div>
+          <div class="col-4">
+            <img
+              th:src="@{images/products/cups.jpg}"
+              class="img-fluid"
+              width="100%"
+              height="auto"
+            />
+          </div>
+        </div>
+
+        <hr />
+        <div
+          style="height: 100vh"
+          id="row3"
+          class="row justify-content-evenly align-items-center"
+        >
+          <div class="col-4">
+            <img
+              th:src="@{images/products/usb-c.jpg}"
+              class="img-fluid"
+              width="100%"
+              height="auto"
+            />
+          </div>
+          <div class="col-5">
+            <p>
+              <span class="text-primary font-bold" style="font-size: x-large"
+                >USB-C Charging Cable</span
+              >
+            </p>
+            <p class="font-bold" style="font-size: larger">$19.99</p>
+            <p style="font-size: large">
+              You may be asking yourself, "Why would I pay $20 for this charging
+              cable?", and we say "Why not?!". Once in a lifetime opportunity to
+              own a piece of history. This charging cable will without a doubt
+              break after a few days of use and we'll still be $20 richer. Go
+              ahead and buy 2.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

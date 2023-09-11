@@ -1,7 +1,11 @@
 package com.gcu.controller.product;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,65 +13,75 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.gcu.api.RestInterface;
-import com.gcu.api.ProductRestService;
 import com.gcu.model.Product;
+import com.gcu.service.ProductService;
 
 @Controller
 @RequestMapping("/products")
 public class ProductController {
 
-    RestInterface<Product> service;
-
-    public ProductController(ProductRestService service) {
-        this.service = service;
-    }
+    @Autowired
+    private ProductService service;
 
     @GetMapping("")
-    public ModelAndView products(ModelAndView mv) {
-        mv.setViewName("products");
+    public ModelAndView allProducts(ModelAndView mv) {
         mv.addObject("products", service.findAll());
+        mv.setViewName("products/products");
         return mv;
     }
 
-    @GetMapping(path = "/add-product")
-    public ModelAndView createProductPage(ModelAndView mv, Product product) {
+    @GetMapping(path = "/product-add")
+    public ModelAndView addProductPage(ModelAndView mv, Product product) {
         mv.addObject("product", product);
-        mv.setViewName("add-product");
+        mv.setViewName("products/product-add");
         return mv;
     }
 
-    @GetMapping(path = "/product-detail/{id}")
-    public ModelAndView detailProductPage(ModelAndView mv, Product product, @PathVariable long id) {
-        product = service.get(id);
-        mv.addObject("product", product);
-        mv.setViewName("detail-product");
-        return mv;
-
-    }
-
-    @GetMapping(path = "/update-product/{id}")
-    public ModelAndView updateProductPage(ModelAndView mv, Product product, @PathVariable long id) {
-        product = service.get(id);
-        mv.addObject("product", product);
-        mv.setViewName("update-product");
-        return mv;
-
-    }
-
-    @PutMapping(path = "/update-product/{id}")
-    public String createProductPage(ModelAndView mv, Product product, @PathVariable long id) {
-        service.update(id, product);
-        return "redirect:/products";
-    }
-
-    @PostMapping(path = "/add-product")
-    public String postCreateProduct(@Validated Product product, ModelAndView mv) {
+    @PostMapping(path = "/product-add")
+    public ResponseEntity<String> postProduct(@Validated Product product, ModelAndView mv) {
         System.out.println(
                 String.format("Name: %s\nDescription: %s\nPrice: $%.2f\nStock: %d", product.getName(),
                         product.getDescription(), product.getPrice(),
                         product.getStock()));
-        service.create(product);
-        return "redirect:/products";
+        service.save(product);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("HX-Location", "/products");
+        return new ResponseEntity<String>("", responseHeaders, 201);
     }
+
+    @GetMapping(path = "/product-detail/{id}")
+    public ModelAndView detailProductPage(ModelAndView mv, Product product, @PathVariable long id) {
+        product = service.findById(id);
+        mv.addObject("product", product);
+        mv.setViewName("products/product-detail");
+        return mv;
+
+    }
+
+    @GetMapping(path = "/product-update/{id}")
+    public ModelAndView updateProductPage(ModelAndView mv, Product product, @PathVariable long id) {
+        product = service.findById(id);
+        mv.addObject("product", product);
+        mv.setViewName("products/product-update");
+        return mv;
+
+    }
+
+    @PutMapping(path = "/product-update/{id}")
+    public ModelAndView putProduct(ModelAndView mv, Product product, @PathVariable long id) {
+        service.update(product);
+        mv.addObject("product", product);
+        mv.setViewName("products/product-detail");
+        return mv;
+    }
+
+    @DeleteMapping(path = "/product-delete/{id}")
+    public ResponseEntity<String> deleteProduct(ModelAndView mv, @PathVariable long id) {
+        service.delete(id);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("HX-Location", "/products");
+
+        return new ResponseEntity<String>("", responseHeaders, 204);
+    }
+
 }

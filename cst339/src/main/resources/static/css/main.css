@@ -271,6 +271,46 @@ a:hover {
     color: #0a58ca;
 }
 
+.delete {
+    color: var(--bs-secondary);
+}
+
+.delete:hover {
+    color: var(--bs-danger);
+    cursor: pointer;
+}
+
+.save {
+    color: var(--bs-secondary);
+}
+
+.save:hover {
+    color: var(--bs-success);
+    cursor: pointer;
+}
+
+.edit {
+    color: var(--bs-secondary);
+}
+
+.edit:hover {
+    color: var(--bs-warning);
+    cursor: pointer;
+}
+
+.back {
+    color: var(--bs-secondary);
+}
+
+.back:hover {
+    color: var(--bs-primary);
+    cursor: pointer;
+}
+
+.tableRow:hover{
+    cursor: pointer;
+}
+
 a:not([href]):not([class]),
 a:not([href]):not([class]):hover {
     color: inherit;
@@ -3604,14 +3644,14 @@ fieldset:disabled .btn {
 }
 
 .btn-outline-primary {
-    color: #0d6efd;
-    border-color: #0d6efd;
+    color: var(--bs-primary);
+    border-color: var(--bs-primary);
 }
 
 .btn-outline-primary:hover {
     color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;
+    background-color: var(--bs-primary-hover);
+    border-color: var(--bs-primary-hover);
 }
 
 .btn-check:focus+.btn-outline-primary,
@@ -6085,6 +6125,17 @@ fieldset:disabled .btn {
     color: #fff;
     background-color: #055160;
     border-color: #055160;
+}
+
+.lastRow {
+    background-color: #eee;
+    color: #aaa;
+}
+
+.lastRow:hover {
+    cursor: pointer;
+    background-color: #aaa;
+    color: #eee;
 }
 
 .list-group-item-warning {

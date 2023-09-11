@@ -1,0 +1,134 @@
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http:://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/loggedInTemplate}"
+>
+  <body>
+    <div layout:fragment="content">
+      <div class="container my-5" th:object="${product}">
+        <div class="row justify-content-between align-items-center">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a class="text-primary" th:href="@{/products}">Home</a>
+            </li>
+            <li
+              class="breadcrumb-item active text-secondary"
+              th:text="${product.name}"
+              aria-current="page"
+            ></li>
+          </ol>
+          <hr />
+          <div class="col-12 my-2">
+            <!-- BACK BUTTON -->
+            <a
+              th:hx-get="@{/products}"
+              hx-push-url="true"
+              hx-trigger="click"
+              hx-target="body"
+              class="back text-left"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="currentColor"
+                class="bi bi-arrow-left"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+                />
+              </svg>
+            </a>
+            <!-- BACK BUTTON -->
+          </div>
+          <div class="col-md-12 col-lg-12">
+            <div>
+              <div
+                class="row g-3"
+                th:hx-get="@{/products/product-update/{id}(id=${product.id})}"
+                hx-trigger="dblclick"
+                hx-target="body"
+              >
+                <div class="col-sm-12">
+                  <label for="name" class="form-label">Product Name</label>
+                  <input
+                    id-="name"
+                    type="text"
+                    class="form-control"
+                    th:value="${product.name}"
+                    readonly
+                  />
+                </div>
+                <div class="col-sm-12">
+                  <label for="description" class="form-label"
+                    >Description</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="description"
+                    readonly
+                    rows="2"
+                    placeholder="This one time I was working in my garden..."
+                    th:text="*{description}"
+                  />
+                </div>
+                <div class="col-sm-6">
+                  <label for="price" class="form-label">Price (USD)</label>
+                  <input
+                    id="price"
+                    type="number"
+                    class="form-control"
+                    th:value="${product.price}"
+                    readonly
+                    min="0"
+                    step="any"
+                  />
+                </div>
+                <div class="col-sm-6">
+                  <label for="stock" class="form-label">Product Stock</label>
+                  <input
+                    id="stock"
+                    type="number"
+                    class="form-control"
+                    th:value="${product.stock}"
+                    readonly
+                    min="0"
+                    step="1"
+                  />
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <!-- EDIT BUTTON -->
+                  <button
+                    type="button"
+                    th:hx-get="@{/products/product-update/{id}(id=${product.id})}"
+                    hx-trigger="click"
+                    hx-target="body"
+                    class="btn btn-outline-primary"
+                  >
+                    Edit
+                  </button>
+                  <!-- EDIT BUTTON -->
+                  <!-- DELETE BUTTON -->
+                  <button
+                    type="button"
+                    th:hx-delete="@{/products/product-delete/{id}(id=${product.id})}"
+                    hx-confirm="Are you sure you wish to delete this?"
+                    hx-trigger="click"
+                    hx-target="body"
+                    class="btn btn-danger"
+                  >
+                    Delete
+                  </button>
+                  <!-- DELETE BUTTON -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
