@@ -1,41 +1,37 @@
 package com.gcu.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.gcu.data.repository.UserRepository;
 import com.gcu.model.User;
 
 @Service
-public class LoginService implements LoginServiceInterface {
+public class LoginService {
 
-    private UserRepository repository;
-    private User user;
+    @Autowired
+    private UserService service;
 
-    public LoginService(UserRepository repository) {
-        this.repository = repository;
-    }
-
-    @Override
     public User findUser(String email) {
-        return repository.findByEmail(email);
+        return service.findByEmail(email);
 
     }
 
-    @Override
     public boolean authenticate(User foundUser, String enteredPassword) {
-        // check to see if password from found user and entered password hashes match
-        // if they do return true if not return false
-        return foundUser.getPassword().matches(enteredPassword);
+        if (foundUser != null) {
+            return foundUser.getPassword().matches(enteredPassword);
+        } else {
+            return false;
+        }
 
     }
 
-    @Override
     public User login(String email, String enteredPassword) {
-        this.user = this.findUser(email);
-        boolean authenticated = this.authenticate(this.user, enteredPassword);
+
+        User u = this.findUser(email);
+        boolean authenticated = this.authenticate(u, enteredPassword);
 
         if (authenticated) {
-            return this.user;
+            return u;
         } else {
             return null;
         }

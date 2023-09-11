@@ -1,4 +1,4 @@
-package com.gcu.controller;
+package com.gcu.controller.user;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gcu.model.User;
-import com.gcu.service.RegistrationServiceInterface;
+import com.gcu.service.RegistrationService;
 
 @Controller
 @RequestMapping("/registration")
 public class RegistrationController {
 
-	private final RegistrationServiceInterface registrationService;
+	private final RegistrationService registrationService;
 
-	public RegistrationController(RegistrationServiceInterface registrationService) {
+	public RegistrationController(RegistrationService registrationService) {
 		this.registrationService = registrationService;
 	}
 

@@ -1,5 +1,6 @@
 package com.gcu.controller.product;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,19 +11,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gcu.api.RestInterface;
-import com.gcu.api.ProductRestService;
 import com.gcu.model.Product;
+import com.gcu.service.ProductService;
 
 @RestController
 @RequestMapping("/api/products")
 public class ProductRestController {
 
-    RestInterface<Product> service;
-
-    public ProductRestController(ProductRestService service) {
-        this.service = service;
-    }
+    @Autowired
+    private ProductService service;
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Product> findAll() {
@@ -30,18 +27,18 @@ public class ProductRestController {
     }
 
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Product get(@PathVariable int id) {
-        return service.get(id);
+    public Product findById(@PathVariable int id) {
+        return service.findById(id);
     }
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Product create(@RequestBody Product p) {
-        return service.create(p);
+    public Product save(@RequestBody Product p) {
+        return service.save(p);
     }
 
     @PutMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Product update(@PathVariable long id, @RequestBody Product p) {
-        return service.update(id, p);
+        return service.update(p);
     }
 
     @DeleteMapping("/{id}")

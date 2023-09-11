@@ -1,45 +1,83 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http:://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="~{layouts/defaultTemplate}">
-
-<body>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http:://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/defaultTemplate}"
+>
+  <body>
     <div layout:fragment="content">
-        <div class="container my-5">
-            <div class="row justify-content-between align-items-center">
-                <h5 class="text-primary">Login</h5>
-                <hr />
-                <div class="col-md-5 col-lg-5">
-                    <p>Get ready to browse the worlds largest inventory of overpriced, sub-par items! You're sure to
-                        find something you don't need, and we're thrilled to accept your money for it!</p>
-                    <p>Don't forget to select expedited shipping at checkout! It won't arrive any sooner, but we'll
-                        lightly jog your product over to the packaging area.
-                    <p><span class="text-primary">If you're having a bad time, it's our pleasure to be the
-                            reason!</span></p>
-                    <!-- <img th:src="@{images/logoC.png}" style="object-fit: scale-down;" width="100%" height="auto" /> -->
+      <div class="container my-5">
+        <div class="row justify-content-between align-items-center">
+          <h5 class="text-primary">Login</h5>
+          <hr />
+          <div class="col-md-5 col-lg-5">
+            <p>
+              Get ready to browse the worlds largest inventory of overpriced,
+              sub-par items! You're sure to find something you don't need, and
+              we're thrilled to accept your money for it!
+            </p>
+            <p>
+              Don't forget to select expedited shipping at checkout! It won't
+              arrive any sooner, but we'll lightly jog your product over to the
+              packaging area.
+            </p>
+
+            <p>
+              <span class="text-primary"
+                >If you're having a bad time, it's our pleasure to be the
+                reason!</span
+              >
+            </p>
+            <!-- <img th:src="@{images/logoC.png}" style="object-fit: scale-down;" width="100%" height="auto" /> -->
+          </div>
+          <div class="col-md-6 col-lg-6">
+            <div class="border-primary border-round border-solid">
+              <form
+                th:action="@{login/doLogin}"
+                method="post"
+                th:object="${user}"
+              >
+                <div class="row g-3">
+                  <div class="col-sm-12 form-floating">
+                    <input
+                      type="email"
+                      th:field="*{email}"
+                      class="form-control"
+                      placeholder="email@email.com"
+                      id="email"
+                      required
+                    />
+                    <label for="email">Email address</label>
+                  </div>
+                  <div class="col-sm-12 form-floating">
+                    <input
+                      type="password"
+                      th:field="*{password}"
+                      class="form-control"
+                      id="password"
+                      placeholder="password"
+                      required
+                    />
+                    <label for="password">Password</label>
+                  </div>
+                  <button type="submit" class="btn btn-primary mt-3">
+                    Login
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-outline-primary mt-3"
+                    hx-get="/registration"
+                    hx-target="body"
+                    hx-trigger="click"
+                  >
+                    Register New User
+                  </button>
                 </div>
-                <div class="col-md-6 col-lg-6">
-                    <div class="border-primary border-round border-solid">
-                        <form th:action="@{login/doLogin}" method="post" th:object="${user}">
-                            <div class="row g-3">
-                                <div class="col-sm-12">
-                                    <label for="email" class="form-label">Email address</label>
-                                    <input type="email" th:field="*{email}" class="form-control" id="email"
-                                        placeholder="email@example.com" required>
-                                </div>
-                                <div class="col-sm-12">
-                                    <label for="password" class="form-label">Password</label>
-                                    <input type="password" th:field="*{password}" class="form-control" id="password"
-                                        placeholder="Password" required>
-                                </div>
-                                <button type="submit" class="btn btn-primary mt-3">Login</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+              </form>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-
-</body>
-
+  </body>
 </html>

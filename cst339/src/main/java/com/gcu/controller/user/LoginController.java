@@ -1,4 +1,4 @@
-package com.gcu.controller;
+package com.gcu.controller.user;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,13 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gcu.model.User;
 import com.gcu.service.LoginService;
-import com.gcu.service.LoginServiceInterface;
 
 @Controller
 @RequestMapping("/login")
 public class LoginController {
 
-    private final LoginServiceInterface service;
+    private final LoginService service;
 
     public LoginController(LoginService service) {
         this.service = service;
