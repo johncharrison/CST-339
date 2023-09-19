@@ -21,7 +21,7 @@ public class ProductRestController {
     @Autowired
     private ProductService service;
 
-    @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Product> findAll() {
         return service.findAll();
     }
@@ -31,7 +31,7 @@ public class ProductRestController {
         return service.findById(id);
     }
 
-    @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public Product save(@RequestBody Product p) {
         return service.save(p);
     }

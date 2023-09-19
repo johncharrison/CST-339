@@ -18,6 +18,8 @@ services:
       - "8000:8000"
     networks:
       - dev
+    depends_on:
+      - db
 
   adminer:
     image: adminer
@@ -29,6 +31,8 @@ services:
       - "8080:8080"
     networks:
       - dev
+    depends_on:
+      - db
 
 networks:
   dev:

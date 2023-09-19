@@ -5404,6 +5404,11 @@ fieldset:disabled .btn {
     }
 }
 
+.loginError {
+    color: rgb(var(--bs-danger-rgb));
+}
+
+
 .accordion-button:hover {
     z-index: 2;
 }

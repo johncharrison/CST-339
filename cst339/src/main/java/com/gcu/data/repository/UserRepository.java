@@ -1,5 +1,7 @@
 package com.gcu.data.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -11,5 +13,5 @@ import com.gcu.model.User;
 public interface UserRepository extends CrudRepository<User, Long> {
 
     @Query(value = "SELECT * FROM users WHERE EMAIL=:email LIMIT 1", nativeQuery = true)
-    public User findByEmail(@Param("email") String email);
+    Optional<User> findByEmail(@Param("email") String email);
 }
