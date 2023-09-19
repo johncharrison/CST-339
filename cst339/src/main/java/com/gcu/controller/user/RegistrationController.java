@@ -12,7 +12,7 @@ import com.gcu.model.User;
 import com.gcu.service.RegistrationService;
 
 @Controller
-@RequestMapping("/registration")
+@RequestMapping("/register")
 public class RegistrationController {
 
 	private final RegistrationService registrationService;
@@ -24,16 +24,16 @@ public class RegistrationController {
 	@GetMapping
 	public String showRegistrationForm(Model model) {
 		model.addAttribute("user", new User());
-		return "registration";
+		return "register";
 	}
 
-	@PostMapping("/register")
+	@PostMapping
 	public String registerUser(@Validated User user, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
-			return "registration";
+			return "register";
 		}
 		registrationService.registerUser(user);
-
+		System.out.println("Registered user!");
 		return "redirect:/login";
 	}
 

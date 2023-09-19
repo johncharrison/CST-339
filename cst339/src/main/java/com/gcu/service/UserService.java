@@ -3,6 +3,8 @@ package com.gcu.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.gcu.data.repository.UserRepository;
@@ -10,8 +12,12 @@ import com.gcu.model.User;
 
 @Service
 public class UserService implements ServiceInterface<User> {
+
     @Autowired
     private UserRepository repository;
+
+    @Autowired
+    private PasswordEncoder encoder;
 
     @Override
     public Iterable<User> findAll() {
@@ -34,9 +40,9 @@ public class UserService implements ServiceInterface<User> {
     public User save(User user) {
 
         try {
-            User u = repository.findByEmail(user.getEmail());
-            if (u == null) {
-                System.out.println("User registered: " + user.getEmail());
+            Optional<User> u = repository.findByEmail(user.getEmail());
+            if (!u.isPresent()) {
+                user.setPassword(encoder.encode(user.getPassword()));
                 return repository.save(user);
             } else {
                 System.out.println("Account with that email already exists");
@@ -70,7 +76,7 @@ public class UserService implements ServiceInterface<User> {
         repository.deleteById(id);
     }
 
-    public User findByEmail(String email) {
+    public Optional<User> findByEmail(String email) {
         return repository.findByEmail(email);
     }
 }

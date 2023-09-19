@@ -3,38 +3,16 @@ package com.gcu.controller.user;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.gcu.model.User;
-import com.gcu.service.LoginService;
 
 @Controller
 @RequestMapping("/login")
 public class LoginController {
 
-    private final LoginService service;
-
-    public LoginController(LoginService service) {
-        this.service = service;
-    }
-
     @GetMapping
     public String login(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("title", "Login Form");
         return "login";
     }
 
-    @PostMapping("/doLogin")
-    public String doLogin(String email, String password) {
-        User u = service.login(email, password);
-
-        if (u != null) {
-            System.out.println(u.getLastName() + ", " + u.getFirstName());
-            return "redirect:/products";
-        }
-
-        return "login";
-
-    }
 }

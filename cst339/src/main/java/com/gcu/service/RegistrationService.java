@@ -7,6 +7,7 @@ import com.gcu.model.User;
 
 @Service
 public class RegistrationService {
+
     @Autowired
     private UserService service;
 
