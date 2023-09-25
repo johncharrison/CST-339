@@ -11,6 +11,8 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import com.gcu.service.security.SecurityUserDetailsService;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -24,16 +26,23 @@ public class SecurityConfig {
                                 .csrf(csrf -> csrf.disable())
                                 .authorizeHttpRequests((requests) -> requests
                                                 .requestMatchers("/", "/register", "/css/*", "/js/*",
-                                                                "/images/*")
+                                                                "/images/*", "/swagger-ui/*")
                                                 .permitAll())
                                 .authorizeHttpRequests((r) -> r
                                                 .requestMatchers("/products/**", "/products", "/css/*", "/js/*",
-                                                                "/images/*")
+                                                                "/images/*", "/api/**", "/api/products/*",
+                                                                "/api/users/*", "/api/orders/*")
                                                 .authenticated())
                                 .formLogin((form) -> form
                                                 .loginPage("/login")
                                                 .defaultSuccessUrl("/products", true)
                                                 .permitAll())
+                                .userDetailsService(userDetailsService)
+                                .httpBasic(withDefaults())
+                                .authorizeHttpRequests((r) -> r
+                                                .requestMatchers("/api/**", "/api/products/*",
+                                                                "/api/users/*", "/api/orders/*")
+                                                .authenticated())
                                 .userDetailsService(userDetailsService)
                                 .logout(logout -> logout
                                                 .logoutUrl("/logout")
